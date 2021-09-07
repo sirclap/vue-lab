@@ -17,14 +17,14 @@ export default defineComponent({
   },
   setup() {
     const organization: Ref<string> = ref(
-      localStorage.organizationFilter
-        ? localStorage.organizationFilter
+      sessionStorage.organizationFilter
+        ? sessionStorage.organizationFilter
         : "lemoncode"
     );
-    console.log("setup");
+
     const onFilter = (filter: string) => {
       organization.value = filter;
-      localStorage.organizationFilter = filter;
+      sessionStorage.organizationFilter = filter;
     };
 
     return { organization, onFilter };

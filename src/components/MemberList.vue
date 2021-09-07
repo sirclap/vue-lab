@@ -4,12 +4,16 @@
       <th>Avatar</th>
       <th>Login</th>
       <th>Id</th>
+      <th></th>
     </thead>
     <tbody>
       <tr v-for="member in members" :key="member.id">
         <td>{{ member.login }}</td>
         <td>{{ member.login }}</td>
         <td>{{ member.id }}</td>
+        <td>
+          <router-link :to="`/member/${member.login}`"> hola </router-link>
+        </td>
       </tr>
     </tbody>
   </table>
