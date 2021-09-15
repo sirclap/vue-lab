@@ -1,22 +1,16 @@
 <template>
-  <table border="1">
-    <thead>
-      <th>Avatar</th>
-      <th>Login</th>
-      <th>Id</th>
-      <th></th>
-    </thead>
-    <tbody>
-      <tr v-for="member in members" :key="member.id">
-        <td>{{ member.login }}</td>
-        <td>{{ member.login }}</td>
-        <td>{{ member.id }}</td>
-        <td>
-          <router-link :to="`/member/${member.login}`"> hola </router-link>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div v-if="members" class="list">
+    <v-card v-for="member in members" :key="member.id" class="member">
+      <v-img :src="member.avatar_url" />
+      <v-card-text>
+        <p>{{ member.login }}</p>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn :href="`/member/${member.login}`">Ver</v-btn>
+      </v-card-actions>
+    </v-card>
+  </div>
+  <div v-else class="list-empty">No se han encontrado resultados</div>
 </template>
 
 <script lang="ts">
@@ -49,4 +43,17 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.member {
+  margin: 2rem;
+  width: 225px;
+}
+.list-empty {
+  margin: 2rem;
+  text-align: center;
+}
+</style>

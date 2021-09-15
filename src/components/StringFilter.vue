@@ -1,8 +1,20 @@
 <template>
-  <div>
-    <input type="text" v-model="filterValue" />
-    <v-btn flat @click="search()"> Buscar </v-btn>
+  <div class="container">
+    <v-card>
+      <v-card-text>
+        <input
+          type="text"
+          v-model="filterValue"
+          class="filter-input"
+          v-on:keyup.enter="search"
+        />
+        <v-btn size="small" color="warning" flat @click="search()">
+          Buscar
+        </v-btn>
+      </v-card-text>
+    </v-card>
   </div>
+  <v-divider></v-divider>
 </template>
 
 <script lang="ts">
@@ -15,6 +27,7 @@ export default defineComponent({
       default: "",
     },
   },
+  emits: ["onFilter"],
   setup(props, { emit }) {
     const filterValue: Ref<string> = ref(props.filter);
 
@@ -27,4 +40,17 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.filter-input {
+  border: 1px solid #ccc;
+  padding: 0.2rem;
+  width: 400px;
+  margin-right: 1rem;
+}
+</style>

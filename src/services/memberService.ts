@@ -4,7 +4,9 @@ export const memberService = {
   async get(organization: string): Promise<Members> {
     const members = await fetch(
       `https://api.github.com/orgs/${organization}/members`
-    ).then((response) => response.json());
+    ).then((response) => {
+      return response.ok ? response.json() : null;
+    });
 
     return members;
   },

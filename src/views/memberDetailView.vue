@@ -1,6 +1,28 @@
 <template>
-  <div>{{ member.login }}{<img :src="member.avatar_url" />}</div>
-  <router-link :to="`/members`"> regresar </router-link>
+  <v-card class="member-card">
+    <v-img :src="member.avatar_url" />
+    <v-card-header>
+      <v-card-header-text>
+        <v-card-title>{{ member.name }}</v-card-title>
+        <v-card-subtitle> {{ member.login }}</v-card-subtitle>
+      </v-card-header-text>
+    </v-card-header>
+    <v-card-text>
+      <p>{{ member.company }}</p>
+      {{ member.bio }}
+    </v-card-text>
+    <v-card-actions>
+      <v-btn elevation="2" icon rounded :href="member.html_url">
+        <v-icon large color="darken-2"> mdi-github </v-icon>
+      </v-btn>
+      <v-btn v-if="member.blog" elevation="2" icon rounded :href="member.blog">
+        <v-icon large color="darken-2"> mdi-blogger </v-icon>
+      </v-btn>
+    </v-card-actions>
+    <v-card-actions>
+      <v-btn :href="`/members`">Regresar</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -31,4 +53,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.member-card {
+  max-width: 400px;
+  margin: 50px auto;
+}
+</style>

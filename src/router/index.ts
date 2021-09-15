@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/homeView.vue";
 import MemberList from "../views/memberListView.vue";
 import MemberDetail from "../views/memberDetailView.vue";
 
@@ -7,7 +6,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "Home",
-    component: Home,
+    component: MemberList,
   },
   {
     path: "/members",

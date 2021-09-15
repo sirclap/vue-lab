@@ -1,7 +1,10 @@
 <template>
   <StringFilter :filter="organization" @onFilter="onFilter"></StringFilter>
   <suspense>
-    <MemberList :organization="organization"></MemberList>
+    <template #default>
+      <MemberList :organization="organization"></MemberList>
+    </template>
+    <template #fallback> Cargando... </template>
   </suspense>
 </template>
 
