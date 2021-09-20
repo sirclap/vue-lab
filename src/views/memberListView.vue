@@ -19,7 +19,7 @@ export default defineComponent({
     StringFilter,
   },
   setup() {
-    const sessionName = "member-list-filet";
+    const sessionName = "member-list-filter";
 
     const organization: Ref<string> = ref(
       sessionStorage.getItem(sessionName) || "lemoncode"
