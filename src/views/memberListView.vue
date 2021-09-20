@@ -19,15 +19,15 @@ export default defineComponent({
     StringFilter,
   },
   setup() {
+    const sessionName = "member-list-filet";
+
     const organization: Ref<string> = ref(
-      sessionStorage.organizationFilter
-        ? sessionStorage.organizationFilter
-        : "lemoncode"
+      sessionStorage.getItem(sessionName) || "lemoncode"
     );
 
     const onFilter = (filter: string) => {
       organization.value = filter;
-      sessionStorage.organizationFilter = filter;
+      sessionStorage.setItem(sessionName, filter);
     };
 
     return { organization, onFilter };

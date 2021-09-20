@@ -16,10 +16,5 @@ export default defineComponent({
   components: {
     Header,
   },
-  data() {
-    return {
-      //
-    };
-  },
 });
 </script>
